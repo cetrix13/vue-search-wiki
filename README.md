@@ -1,4 +1,4 @@
-# vue-img-gallery
+# vue-search-wiki
 
 ## Project setup
 ```

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import jsonp from 'jsonp';
 
 Vue.use(Vuex);
 
@@ -22,14 +23,14 @@ export default new Vuex.Store({
   },
   actions: {
     search: function ({commit}, query) {
-      const url = 'https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + query + '=&format=json';
-      const res = fetch(url, { method: "GET", mode: "cors" })
-        .then(function onFulfilled(res) {
-        return res.json();
-      }).catch(error => console.log(error));
-
-      const results = res.query.search;
-      commit('set', { type: 'results', items: results });
+      const url = 'https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + query + '&format=json';
+      jsonp(url, (error, response) => {
+        if (error) {
+          throw error;
+        }
+        const results = response.query.search;
+        commit('set', { type: 'results', items: results });
+      });
     }
   }
 });
