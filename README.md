@@ -1,4 +1,4 @@
-# vue-search-wiki
+Сервис поиска. Источник данных сервис [mediawiki.org](https://www.mediawiki.org/wiki/API:Main_page)
 
 ## Project setup
 ```

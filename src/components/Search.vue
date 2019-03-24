@@ -1,6 +1,6 @@
 <template>
   <div class="Search">
-    <input type="text" class="Search__input" v-model="query" />
+    <input type="text" class="Search__input" v-model="query" @keyup.enter="search()"/>
     <button class="Search__button" @click="search()">Search</button>
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       query: ""
-    }
+    };
   },
   methods: {
     search() {
